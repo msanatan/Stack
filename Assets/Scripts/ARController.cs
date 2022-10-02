@@ -6,8 +6,10 @@ public class ARController : MonoBehaviour
 {
     [SerializeField] GameObject cube;
     [SerializeField] ARRaycastManager raycastManager;
+    [SerializeField] Color defaultColour;
+    [SerializeField] Color alternateColour;
+    bool useDefaultColour = true;
 
-    // Update is called once per frame
     void Update()
     {
         // Quit when we press back on phone
@@ -26,9 +28,23 @@ public class ARController : MonoBehaviour
 
                 if (touches.Count > 0)
                 {
+                    // Set cube position
                     var cubePosition = touches[0].pose.position;
                     cubePosition.y += cube.transform.localScale.y / 2;
-                    Instantiate(cube, cubePosition, touches[0].pose.rotation);
+
+                    // Create cube
+                    var createdCube = Instantiate<GameObject>(cube, cubePosition, touches[0].pose.rotation);
+
+                    // Set cube colour
+                    if (useDefaultColour)
+                    {
+                        createdCube.GetComponent<MeshRenderer>().material.color = defaultColour;
+                    }
+                    else
+                    {
+                        createdCube.GetComponent<MeshRenderer>().material.color = alternateColour;
+                    }
+                    useDefaultColour = !useDefaultColour;
                 }
             }
         }
