@@ -26,7 +26,9 @@ public class ARController : MonoBehaviour
 
                 if (touches.Count > 0)
                 {
-                    Instantiate(cube, touches[0].pose.position, touches[0].pose.rotation);
+                    var cubePosition = touches[0].pose.position;
+                    cubePosition.y += cube.transform.localScale.y / 2;
+                    Instantiate(cube, cubePosition, touches[0].pose.rotation);
                 }
             }
         }
