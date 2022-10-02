@@ -10,6 +10,12 @@ public class ARController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Quit when we press back on phone
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         if (Input.touchCount > 0)
         {
             var touchInput = Input.GetTouch(0);
