@@ -10,15 +10,18 @@ public class ARController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var touchInput = Input.GetTouch(0);
-        if (Input.touchCount > 0 && touchInput.phase == TouchPhase.Began)
+        if (Input.touchCount > 0)
         {
-            var touches = new List<ARRaycastHit>();
-            raycastManager.Raycast(touchInput.position, touches, UnityEngine.XR.ARSubsystems.TrackableType.Planes);
-
-            if (touches.Count > 0)
+            var touchInput = Input.GetTouch(0);
+            if (Input.touchCount > 0 && touchInput.phase == TouchPhase.Began)
             {
-                GameObject.Instantiate(cube, touches[0].pose.position, touches[0].pose.rotation);
+                var touches = new List<ARRaycastHit>();
+                raycastManager.Raycast(touchInput.position, touches, UnityEngine.XR.ARSubsystems.TrackableType.Planes);
+
+                if (touches.Count > 0)
+                {
+                    Instantiate(cube, touches[0].pose.position, touches[0].pose.rotation);
+                }
             }
         }
     }
