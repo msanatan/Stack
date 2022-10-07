@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 1617008298}
   - component: {fileID: 1617008299}
   m_Layer: 0
-  m_Name: AR Controller
+  m_Name: ObjectSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -548,6 +548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cube: {fileID: 2744794620776002574, guid: 9c533ea1695784f85a61be2968189f49, type: 3}
   raycastManager: {fileID: 1659859602}
+  placementIndicator: {fileID: 2003403300}
   defaultColour: {r: 1, g: 1, b: 1, a: 0}
   alternateColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1659859597
